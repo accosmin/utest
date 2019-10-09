@@ -44,7 +44,7 @@ static exception_status check_throw(const toperator& op)
 }
 
 #define UTEST_BEGIN_MODULE(name) \
-int main(int, char* []) /*NOLINT(hicpp-function-size)*/ \
+int main(int, char* []) /*NOLINT(hicpp-function-size,readability-function-size)*/ \
 { \
 try \
 { \
