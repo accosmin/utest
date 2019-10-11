@@ -5,7 +5,7 @@
 #include <string>
 #include <iostream>
 #ifdef UTEST_WITH_EIGEN
-#include <eigen3/Eigen/Core>
+#include <Eigen/Core>
 #endif
 
 #define UTEST_STRINGIFY_(x) #x
