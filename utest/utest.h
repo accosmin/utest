@@ -198,7 +198,7 @@ catch (...) \
     UTEST_EVALUATE_GREATER_EQUAL(left, right, true)
 
 #define UTEST_EVALUATE_CLOSE(left, right, epsilon, critical) \
-    UTEST_EVALUATE_LESS(std::fabs((left) - (right)), epsilon, critical)
+    UTEST_EVALUATE_LESS(std::fabs((left) - (right)), epsilon * (1 + std::fabs((left)) + std::fabs((right))), critical)
 #define UTEST_CHECK_CLOSE(left, right, epsilon) \
     UTEST_EVALUATE_CLOSE(left, right, epsilon, false)
 #define UTEST_REQUIRE_CLOSE(left, right, epsilon) \
@@ -206,7 +206,7 @@ catch (...) \
 
 #ifdef UTEST_WITH_EIGEN
 #define UTEST_EVALUATE_EIGEN_CLOSE(left, right, epsilon, critical) \
-    UTEST_EVALUATE_LESS((((left) - (right)).array().abs().maxCoeff()), epsilon, critical)
+    UTEST_EVALUATE_LESS((((left) - (right)).array().abs().maxCoeff()), epsilon * (1 + (left).array().maxCoeff() + (right).array().maxCoeff()), critical)
 #define UTEST_CHECK_EIGEN_CLOSE(left, right, epsilon) \
     UTEST_EVALUATE_EIGEN_CLOSE(left, right, epsilon, false)
 #define UTEST_REQUIRE_EIGEN_CLOSE(left, right, epsilon) \
