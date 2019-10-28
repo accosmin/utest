@@ -206,7 +206,8 @@ catch (...) \
 
 #ifdef UTEST_WITH_EIGEN
 #define UTEST_EVALUATE_EIGEN_CLOSE(left, right, epsilon, critical) \
-    UTEST_EVALUATE_LESS((((left) - (right)).array().abs().maxCoeff()), epsilon * (1 + (left).array().maxCoeff() + (right).array().maxCoeff()), critical)
+    UTEST_EVALUATE_LESS((((left) - (right)).array().abs().maxCoeff()), \
+        epsilon * (1 + (left).array().abs().maxCoeff() + (right).array().abs().maxCoeff()), critical)
 #define UTEST_CHECK_EIGEN_CLOSE(left, right, epsilon) \
     UTEST_EVALUATE_EIGEN_CLOSE(left, right, epsilon, false)
 #define UTEST_REQUIRE_EIGEN_CLOSE(left, right, epsilon) \
