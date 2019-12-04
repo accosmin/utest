@@ -3,6 +3,7 @@
 #include <cmath>
 #include <atomic>
 #include <string>
+#include <iomanip>
 #include <iostream>
 #ifdef UTEST_WITH_EIGEN
 #include <Eigen/Core>
@@ -88,7 +89,7 @@ catch (...) \
     }
 #define UTEST_HANDLE_FAILURE() \
     ++ utest_n_failures; \
-    std::cout << __FILE__ << ":" << __LINE__ << ": [" << utest_module_name << "/" << utest_case_name
+    std::cout << __FILE__ << ":" << __LINE__ << std::fixed << std::setprecision(12) << ": [" << utest_module_name << "/" << utest_case_name
 
 #define UTEST_EVALUATE(check, critical) \
     ++ utest_n_checks; \
